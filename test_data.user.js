@@ -15,7 +15,13 @@
     'use strict';
 
     if(window.location.href.endsWith("gpro.asp")) {
-        const name = document.querySelector('#item-1 > h1 > a.nobold').innerText
+        let nameElement = document.querySelector('#item-1 > h1 > a.nobold')
+        let name = null
+        if(nameElement == null) {
+            name = $('#managerinformation > a.nobold').text()
+        } else {
+            name = nameElement.innerHtml
+        }
         const raceText = $("#racebar > h1").text()
         const match = raceText.match(/Season (\d+), Race (\d+)/)
         const season = match[1]
