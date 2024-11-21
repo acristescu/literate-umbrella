@@ -6,8 +6,8 @@
 // @author       Alexandru Cristescu
 // @match        https://*.gpro.net/gb/Testing.asp
 // @match        https://*.gpro.net/gb/gpro.asp
-// @updateURL    https://raw.githubusercontent.com/YourUsername/YourRepo/main/YourScript.user.js
-// @downloadURL  https://raw.githubusercontent.com/YourUsername/YourRepo/main/YourScript.user.js
+// @updateURL    https://raw.githubusercontent.com/acristescu/literate-umbrella/refs/heads/main/test_data.js
+// @downloadURL  https://raw.githubusercontent.com/acristescu/literate-umbrella/refs/heads/main/test_data.js
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // ==/UserScript==
 
