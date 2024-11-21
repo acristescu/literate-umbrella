@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Test data
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-21
+// @version      2024-11-
 // @description  add test stints to a google sheet
 // @author       Alexandru Cristescu
 // @match        https://*.gpro.net/gb/Testing.asp
@@ -140,36 +140,33 @@
     localStorage.setItem(`testing_data_s${season}`, JSON.stringify(savedData))
 
     const parts = ['ch', 'en', 'fw', 'rw', 'ub', 'si', 'co', 'gb', 'br', 'su', 'el']
-    let string = "mgr\trace\tstn\tlaps\t"
-    parts.forEach((element) => string += element+"_l\t"+element+"_w\t")
-    console.log(string)
-
+    let string = ""
 
     for(let r = 1; r<=17 ; r++) {
         for(let s = 0; s<10 ; s++) {
-            string = ""
             let before = savedData[`r${r}`].before[s]
             let after = savedData[`r${r}`].after[s]
             let laps = savedData[`r${r}`].laps[s]
             if(before != null && after != null) {
-                string = `${name}\t${r}\t${s}\t${laps}\t`
+                string += `${name}\t${r}\t${s}\t${laps}\t`
                 for(let p = 0; p<11; p++) {
-                    string += `   ${before[parts[p]+'_lvl']}\t${after[parts[p]+'_wear'] - before[parts[p]+'_wear']}\t`
+                    string += `${before[parts[p]+'_lvl']}\t${after[parts[p]+'_wear'] - before[parts[p]+'_wear']}\t`
                 }
-                console.log(string)
-
-                fetch('https://script.google.com/macros/s/AKfycbxLluI5zl6lAa5yLyo7qNBAXVKzNluEIM8KVYXP7OtOD_244-S2Gpc8pjmjFdOtVFBQ/exec', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: string
-                })
-                    .then(response => response.json())
-                    .then(result => console.log('Data uploaded:', result))
-                    .catch(error => console.error('Error uploading data:', error));
+                string += '\n'
             }
         }
     }
 
+    console.log(string)
+
+    fetch('https://script.google.com/macros/s/AKfycbxLluI5zl6lAa5yLyo7qNBAXVKzNluEIM8KVYXP7OtOD_244-S2Gpc8pjmjFdOtVFBQ/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: string
+    })
+        .then(response => response.json())
+        .then(result => console.log('Data uploaded:', result))
+        .catch(error => console.error('Error uploading data:', error));
     console.log(savedData)
 
 })();
