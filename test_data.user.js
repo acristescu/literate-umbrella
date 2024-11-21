@@ -144,10 +144,10 @@
     parts.forEach((element) => string += element+"_l\t"+element+"_w\t")
     console.log(string)
 
-    string = ""
 
     for(let r = 1; r<=17 ; r++) {
         for(let s = 0; s<10 ; s++) {
+            string = ""
             let before = savedData[`r${r}`].before[s]
             let after = savedData[`r${r}`].after[s]
             let laps = savedData[`r${r}`].laps[s]
@@ -157,18 +157,19 @@
                     string += `   ${before[parts[p]+'_lvl']}\t${after[parts[p]+'_wear'] - before[parts[p]+'_wear']}\t`
                 }
                 console.log(string)
+
+                fetch('https://script.google.com/macros/s/AKfycbxLluI5zl6lAa5yLyo7qNBAXVKzNluEIM8KVYXP7OtOD_244-S2Gpc8pjmjFdOtVFBQ/exec', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: string
+                })
+                    .then(response => response.json())
+                    .then(result => console.log('Data uploaded:', result))
+                    .catch(error => console.error('Error uploading data:', error));
             }
         }
     }
 
     console.log(savedData)
 
-    fetch('https://script.google.com/macros/s/AKfycbxLluI5zl6lAa5yLyo7qNBAXVKzNluEIM8KVYXP7OtOD_244-S2Gpc8pjmjFdOtVFBQ/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: string
-    })
-    .then(response => response.json())
-    .then(result => console.log('Data uploaded:', result))
-    .catch(error => console.error('Error uploading data:', error));
 })();
