@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Test data
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-
+// @version      2024-11-22
 // @description  add test stints to a google sheet
 // @author       Alexandru Cristescu
 // @match        https://*.gpro.net/gb/Testing.asp
@@ -162,7 +162,8 @@
     fetch('https://script.google.com/macros/s/AKfycbxLluI5zl6lAa5yLyo7qNBAXVKzNluEIM8KVYXP7OtOD_244-S2Gpc8pjmjFdOtVFBQ/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
-        body: string
+        redirect: "follow",
+        body: string.trim()
     })
         .then(response => response.json())
         .then(result => console.log('Data uploaded:', result))
