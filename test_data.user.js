@@ -20,7 +20,7 @@
         if(nameElement == null) {
             name = $('#managerinformation > a.nobold').text()
         } else {
-            name = nameElement.innerHtml
+            name = nameElement.innerHTML
         }
         const raceText = $("#racebar > h1").text()
         const match = raceText.match(/Season (\d+), Race (\d+)/)
@@ -143,6 +143,8 @@
     let string = "mgr\trace\tstn\tlaps\t"
     parts.forEach((element) => string += element+"_l\t"+element+"_w\t")
     console.log(string)
+
+    string = ""
 
     for(let r = 1; r<=17 ; r++) {
         for(let s = 0; s<10 ; s++) {
