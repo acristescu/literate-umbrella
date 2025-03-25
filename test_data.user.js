@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Test data
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-22
+// @version      2025-03-25
 // @description  add test stints to a google sheet
 // @author       Alexandru Cristescu
 // @match        https://*.gpro.net/gb/Testing.asp
