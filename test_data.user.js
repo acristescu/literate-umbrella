@@ -97,7 +97,9 @@
                 before: [null,null,null,null,null,null,null,null,null,null],
                 after: [null,null,null,null,null,null,null,null,null,null],
                 laps: [null,null,null,null,null,null,null,null,null,null],
-            }
+                tyresLeft: [null,null,null,null,null,null,null,null,null,null],
+                temp: null,
+        }
     }
 
     let savedData = JSON.parse(localStorage.getItem(`testing_data_s${season}`))
@@ -137,6 +139,8 @@
         currentRaceData.before[stintsDone] = current
     }
 
+    currentRaceData.temp = document.querySelector("#formQual > div.column.thirtyfive.nomargin > table:nth-child(9) > tbody > tr > td").innerText.split('\n')[1].split(' ')[1].split('°')[0]
+    
     localStorage.setItem(`testing_data_s${season}`, JSON.stringify(savedData))
 
     const parts = ['ch', 'en', 'fw', 'rw', 'ub', 'si', 'co', 'gb', 'br', 'su', 'el']
