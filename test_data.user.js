@@ -163,6 +163,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         redirect: "follow",
+        mode: "no-cors",
         body: string.trim()
     })
         .then(response => response.json())
